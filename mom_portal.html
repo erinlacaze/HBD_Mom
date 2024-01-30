@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mom's Sci-Fi Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            background-image: url('./images/vines.jpg');
+            background-repeat: no-repeat;
+            background-position: center center; /* Center the image */
+            background-size: cover; /* Cover the entire background */
+            margin: 0;
+            padding: 0;
+            color: #1b5e20; /* Dark green text */
+        }
+        .header {
+            background-color: #2e7d32; /* Darker green for the header */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            background-color: #a5d6a7; /* Lighter green for sections */
+            border: 2px solid #81c784; /* Decorative border */
+            padding: 15px;
+            border-radius: 8px;
+            position: relative; /* For pseudo-elements */
+        }
+        .section-header {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #004d40; /* Teal-green */
+        }
+        .bookshelf {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .book {
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #81c784; /* Green border for books */
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .book img {
+            width: 100px; /* Adjust as needed */
+            height: auto;
+        }
+        .book-details {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        #message-board {
+            background-color: #c8e6c9; /* Light green background for message board */
+        }
+        #messages {
+            border: 1px solid #81c784; /* Border for messages area */
+            min-height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            overflow-y: auto;
+        }
+        #messageInput {
+            padding: 5px;
+            width: 70%;
+            margin-right: 10px;
+        }
+        #sciFiQuizForm p {
+            font-weight: bold;
+        }
+        #quizResult {
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #2e7d32; /* Dark green for results */
+        }
+        #soundboard button {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #4caf50; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #soundboard button:hover {
+            background-color: #66bb6a;
+        }
+        .memory-image {
+        width: 200px; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+        }
+        .memory-lane-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+        gap: 20px; /* Adjust the gap between images as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Your Sci-Fi Portal, Mom!</h1>
+    </div>
+    <div class="content">
+        <div class="section" id="welcome">
+            <div class="section-header">Welcome!!!</div>
+            <p>Happy Birthday, Mom! Hope you enjoy this gift! Love you <3</p>
+        </div>
+        <div class="section" id="library">
+            <div class="section-header">Mom's Favorites Library</div>
+            <div class="bookshelf">
+                <div class="book" onclick="showBookDetails('book1')">
+                    <img src="./images/StarWars1.jpg" alt="Star Wars Book">
+                    <p>Star Wars: A New Hope</p>
+                </div>
+                <div class="book" onclick="showBookDetails('book2')">
+                    <img src="./images/HarryPotter1.jpg" alt="Harry Potter Book">
+                    <p>Harry Potter and the Sorcerer's Stone</p>
+                </div>
+                <div class="book" onclick="showBookDetails('book3')">
+                    <img src="./images/Dune.jpg" alt="Dune Book">
+                    <p>Dune</p>
+                </div>
+                <div class="book" onclick="showBookDetails('book4')">
+                    <img src="./images/Logan.jpg" alt="Logan Book">
+                    <p>Logan's Run</p>
+                </div>
+                <div class="book" onclick="showBookDetails('book5')">
+                    <img src="./images/Pride.jpg" alt="Pride Book">
+                    <p>Pride & Prejudice</p>
+                </div>
+                <div class="book" onclick="showBookDetails('video')">
+                    <img src="./images/Fargo.jpg" alt="Fargo Movie">
+                    <p>Fargo</p>
+                </div>
+                <!-- Add more books here -->
+            </div>
+            <div id="bookDetails" class="book-details">
+                <!-- Book details will be shown here -->
+            </div>
+        </div>
+        <div class="section" id="quiz">
+            <div class="section-header">Sci-Fi Quiz</div>
+            <form id="sciFiQuizForm">
+                <!-- Question 1 -->
+                <p>1. What is the name of Han Solo's ship?</p>
+                <input type="radio" id="q1Option1" name="question1" value="DeathStar">
+                <label for="q1Option1">A) Death Star</label><br>
+                <input type="radio" id="q1Option2" name="question1" value="MillenniumFalcon">
+                <label for="q1Option2">B) Millennium Falcon</label><br>
+                <input type="radio" id="q1Option3" name="question1" value="StarDestroyer">
+                <label for="q1Option3">C) Star Destroyer</label><br>
+                <input type="radio" id="q1Option4" name="question1" value="XWingFighter">
+                <label for="q1Option4">D) X-Wing Fighter</label><br>
+
+                <!-- Question 2 -->
+                <p>2. What position does Harry Potter play in Quidditch?</p>
+                <input type="radio" id="q2Option1" name="question2" value="Chaser">
+                <label for="q2Option1">A) Chaser</label><br>
+                <input type="radio" id="q2Option2" name="question2" value="Keeper">
+                <label for="q2Option2">B) Keeper</label><br>
+                <input type="radio" id="q2Option3" name="question2" value="Seeker">
+                <label for="q2Option3">C) Seeker</label><br>
+                <input type="radio" id="q2Option4" name="question2" value="Beater">
+                <label for="q2Option4">D) Beater</label><br>
+
+                <!-- Question 3 -->
+                <p>3. Who wrote the science fiction novel 'Dune'?</p>
+                <input type="radio" id="q3Option1" name="question3" value="IsaacAsimov">
+                <label for="q3Option1">A) Isaac Asimov</label><br>
+                <input type="radio" id="q3Option2" name="question3" value="PhilipKDick">
+                <label for="q3Option2">B) Philip K. Dick</label><br>
+                <input type="radio" id="q3Option3" name="question3" value="FrankHerbert">
+                <label for="q3Option3">C) Frank Herbert</label><br>
+                <input type="radio" id="q3Option4" name="question3" value="ArthurCClarke">
+                <label for="q3Option4">D) Arthur C. Clarke</label><br>
+
+                <!-- Question 4 -->
+                <p>4. Which character famously said, 'I am your father'?</p>
+                <input type="radio" id="q4Option1" name="question4" value="ObiWanKenobi">
+                <label for="q4Option1">A) Obi-Wan Kenobi</label><br>
+                <input type="radio" id="q4Option2" name="question4" value="DarthVader">
+                <label for="q4Option2">B) Darth Vader</label><br>
+                <input type="radio" id="q4Option3" name="question4" value="EmperorPalpatine">
+                <label for="q4Option3">C) Emperor Palpatine</label><br>
+                <input type="radio" id="q4Option4" name="question4" value="LukeSkywalker">
+                <label for="q4Option4">D) Luke Skywalker</label><br>
+
+                <!-- Question 5 -->
+                <p>5. Which house is Harry Potter sorted into at Hogwarts?</p>
+                <input type="radio" id="q5Option1" name="question5" value="Gryffindor">
+                <label for="q5Option1">A) Gryffindor</label><br>
+                <input type="radio" id="q5Option2" name="question5" value="Hufflepuff">
+                <label for="q5Option2">B) Hufflepuff</label><br>
+                <input type="radio" id="q5Option3" name="question5" value="Ravenclaw">
+                <label for="q5Option3">C) Ravenclaw</label><br>
+                <input type="radio" id="q5Option4" name="question5" value="Slytherin">
+                <label for="q5Option4">D) Slytherin</label><br>
+
+                <!-- Question 6 -->
+                <p>6. In the novel 'Dune', what is the name of the desert planet?</p>
+                <input type="radio" id="q6Option1" name="question6" value="Tatooine">
+                <label for="q6Option1">A) Tatooine</label><br>
+                <input type="radio" id="q6Option2" name="question6" value="Arrakis">
+                <label for="q6Option2">B) Arrakis</label><br>
+                <input type="radio" id="q6Option3" name="question6" value="Endor">
+                <label for="q6Option3">C) Endor</label><br>
+                <input type="radio" id="q6Option4" name="question6" value="Alderaan">
+                <label for="q6Option4">D) Alderaan</label><br>
+
+                <!-- Question 7 -->
+                <p>7. Who wrote the novel 'Foundation'?</p>
+                <input type="radio" id="q7Option1" name="question7" value="IsaacAsimov">
+                <label for="q7Option1">A) Isaac Asimov</label><br>
+                <input type="radio" id="q7Option2" name="question7" value="RayBradbury">
+                <label for="q7Option2">B) Ray Bradbury</label><br>
+                <input type="radio" id="q7Option3" name="question7" value="PhilipKDick">
+                <label for="q7Option3">C) Philip K. Dick</label><br>
+                <input type="radio" id="q7Option4" name="question7" value="ArthurCClarke">
+                <label for="q7Option4">D) Arthur C. Clarke</label><br>
+
+                <!-- Question 8 -->
+                <p>8. Which classic science fiction author coined the term 'robot'?</p>
+                <input type="radio" id="q8Option1" name="question8" value="IsaacAsimov">
+                <label for="q8Option1">A) Isaac Asimov</label><br>
+                <input type="radio" id="q8Option2" name="question8" value="PhilipKDick">
+                <label for="q8Option2">B) Philip K. Dick</label><br>
+                <input type="radio" id="q8Option3" name="question8" value="KarelCapek">
+                <label for="q8Option3">C) Karel Čapek</label><br>
+                <input type="radio" id="q8Option4" name="question8" value="ArthurCClarke">
+                <label for="q8Option4">D) Arthur C. Clarke</label><br>
+
+                <!-- Question 9 -->
+                <p>9. In 'Star Trek', what is the Klingon saying?</p>
+                <input type="radio" id="q9Option1" name="question9" value="LiveLongAndProsper">
+                <label for="q9Option1">A) Live Long and Prosper</label><br>
+                <input type="radio" id="q9Option2" name="question9" value="ResistanceIsFutile">
+                <label for="q9Option2">B) Resistance is Futile</label><br>
+                <input type="radio" id="q9Option3" name="question9" value="Qapla">
+                <label for="q9Option3">C) Qapla'</label><br>
+                <input type="radio" id="q9Option4" name="question9" value="MakeItSo">
+                <label for="q9Option4">D) Make it So</label><br>
+
+                <!-- Question 10 -->
+                <p>10. What is the name of the computer system in '2001: A Space Odyssey'?</p>
+                <input type="radio" id="q10Option1" name="question10" value="HAL9000">
+                <label for="q10Option1">A) HAL 9000</label><br>
+                <input type="radio" id="q10Option2" name="question10" value="DeepThought">
+                <label for="q10Option2">B) Deep Thought</label><br>
+                <input type="radio" id="q10Option3" name="question10" value="Skynet">
+                <label for="q10Option3">C) Skynet</label><br>
+                <input type="radio" id="q10Option4" name="question10" value="GLaDOS">
+                <label for="q10Option4">D) GLaDOS</label><br>
+        
+                <!-- More questions can be added here -->
+        
+                <input type="button" value="Submit" onclick="checkQuizAnswers()">
+            </form>
+            <div id="quizResult"></div>
+        </div>
+        <div class="section" id="memory-lane">
+            <div class="section-header">Memory Lane</div>
+            <p>Take a stroll down memory lane...</p>
+            <div class="memory-lane-grid">
+                <div>
+                    <img src="./memories/1.jpg" alt="Memory 1" class="memory-image">
+                    <p>Disneyworld :)</p>
+                </div>
+                <div>
+                    <img src="./memories/2.jpg" alt="Memory 2" class="memory-image">
+                    <p>Young Smokey</p>
+                </div>
+                <div>
+                    <img src="./memories/3.jpg" alt="Memory 3" class="memory-image">
+                    <p>My Graduation!</p>
+                </div>
+                <div>
+                    <img src="./memories/4.jpg" alt="Memory 4" class="memory-image">
+                    <p>Our Trips to Cannon Beach</p>
+                </div>
+                <div>
+                    <img src="./memories/5.jpg" alt="Memory 5" class="memory-image">
+                    <p>Our Trips to Quinault</p>
+                </div>
+                <div>
+                    <img src="./memories/6.jpg" alt="Memory 6" class="memory-image">
+                    <p>Going to Football Games Together!</p>
+                </div>
+                <div>
+                    <img src="./memories/7.jpg" alt="Memory 7" class="memory-image">
+                    <p>And the Adele concert...</p>
+                </div>
+                <div>
+                    <img src="./memories/8.jpg" alt="Memory 8" class="memory-image">
+                    <p>And Time with Family!</p>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="message-board">
+            <div class="section-header">Message Board</div>
+            <div id="messages">
+                <!-- Sample message -->
+                <p><strong>Erin:</strong> Happy Birthday! Love you bunches!</p>
+                <p><strong>Erin:</strong> Miss you too! Can't wait to come back for break!</p>
+                <p><strong>Erin:</strong> You are the best mother in the world and such an amazing role model <3</p>
+                <p><strong>Erin:</strong> And just think... at least you're younger than Dad! :D <3</p>
+                <!-- More messages can be added here -->
+            </div>
+            <div>
+                <input type="text" id="messageInput" placeholder="Write a message..." />
+                <button onclick="addMessage()">Post Message</button>
+            </div>
+        </div>
+        <div class="section" id="soundboard">
+            <div class="section-header">Your Soundboard</div>
+            <button onclick="playSound('sound1')">Play Sound 1</button>
+            <button onclick="playSound('sound2')">Play Sound 2</button>
+            <button onclick="playSound('sound3')">Play Sound 3</button>
+            <button onclick="playSound('sound4')">Play Sound 4</button>
+            <button onclick="playSound('sound5')">Play Sound 5</button>
+            <button onclick="playSound('sound6')">Play Sound 6</button>
+            <button onclick="playSound('sound7')">Play Sound 7</button>
+            <!-- Add more sound buttons here -->
+
+            <audio id="sound1" src="./sounds/imperial_march.mp3"></audio>
+            <audio id="sound2" src="./sounds/cantina.mp3"></audio>
+            <audio id="sound3" src="./sounds/r2d2.mp3"></audio>
+            <audio id="sound4" src="./sounds/harry.mp3"></audio>
+            <audio id="sound5" src="./sounds/dumbledore.mp3"></audio>
+            <audio id="sound6" src="./sounds/fly-you-fools.mp3"></audio>
+            <audio id="sound7" src="./sounds/gandalf.mp3"></audio>
+            <!-- Add more audio elements here -->
+        </div>
+        <div class="section" id="youtube-video">
+            <div class="section-header">Funny Videos</div>
+            <!-- Embed YouTube Video -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HBBwXAPNLr0?si=bwIePjggdx43jTkp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/nGeKSiCQkPw?si=powU6Jf_kHzL1Clp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/sax6J8n1AiE?si=DVk5ohlK-AkGJWkK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/2GCzyZexnNE?si=MnauUJIeCkwoZEQJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </div>
+    </div>
+    <script>
+        function showBookDetails(bookId) {
+            var details = '';
+            if (bookId === 'book1') {
+                details = '<h3>Star Wars: A New Hope</h3><p>Luke Skywalker challenged the stormtroopers' +
+                     ' of a distant galaxy on a daring mission — where a force of life became the power of death!</p>' + 
+                     '<p>Farm chores sure could be dull, and Luke Skywalker was bored beyond belief.' +
+                     ' He yearned for adventures out among the stars—adventures that would take him beyond the furthest galaxies to distant and alien worlds.</p>' +
+                     '<p>But Luke got more than he bargained for when he intercepted a cryptic message from a beautiful princess held captive by a dark and powerful warlord. ' + 
+                     'Luke didnt know who she was, but he knew he had to save her — and soon, because time was running out.</p>' +
+                     '<p>Armed only with courage and with the light saber that had been his fathers, Luke was catapulted into the middle of the most savage space war ever… ' + 
+                     'and he was headed straight for a desperate encounter on the enemy battle station known as the Death Star!</p>';
+            } else if (bookId === 'book2') {
+                details = '<h3>Harry Potter and the Sorcerer\'s Stone</h3>' +
+                  '<p>Harry Potter has no idea how famous he is. That\'s because he\'s being raised by his miserable aunt and uncle who are terrified Harry will learn that he\'s really a wizard, just as his parents were.</p>' +
+                  '<p>But everything changes when Harry is summoned to attend an infamous school for wizards, and he begins to discover some clues about his illustrious birthright.</p>' +
+                  '<p>From the surprising way he is greeted by a lovable giant, to the unique curriculum and colorful faculty at his unusual school, Harry finds himself drawn deep inside a mystical world he never knew existed and closer to his own noble destiny.</p>';
+            } else if (bookId === 'book3') {
+                details = '<h3>Dune</h3>' +
+                  '<p>Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the “spice” melange, a drug capable of extending life and enhancing consciousness. Coveted across the known universe, melange is a prize worth killing for...</p>' +
+                  '<p>When House Atreides is betrayed, the destruction of Paul’s family will set the boy on a journey toward a destiny greater than he could ever have imagined. And as he evolves into the mysterious man known as Muad’Dib, he will bring to fruition humankind’s most ancient and unattainable dream.</p>';
+            } else if (bookId === 'book4') {
+                details = '<h3>Logan\'s Run</h3>' +
+                  '<p>It\'s the 23rd Century and at age 21... your life is over! Logan-6 has been trained to kill; ' +
+                  'born and bred from conception to be the best of the best. But his time is short and before his ' +
+                  'life ends he\'s got one final mission: Find and destroy Sanctuary, a fabled haven for those ' +
+                  'that chose to defy the system. But when Logan meets and falls in love with Jessica, he begins ' +
+                  'to question the very system he swore to protect and soon they\'re both running for their lives. ' +
+                  'When Last Day comes, will you lie down and die... or run!</p>';
+            } else if (bookId === 'book5') {
+                details = '<h3>Pride & Prejudice</h3>' +
+                  '<p>Pride and Prejudice is an 1813 romantic novel of manners written by Jane Austen. The novel follows the character ' +
+                  'development of Elizabeth Bennet, the dynamic protagonist of the book who learns about the repercussions of hasty judgments ' +
+                  'and comes to appreciate the difference between superficial goodness and actual goodness. Its humour lies in its honest depiction ' +
+                  'of manners, education, marriage, and money during the Regency era in England. Pride and Prejudice has consistently appeared near the ' +
+                  'top of lists of "most-loved books" among literary scholars and the reading public. It has become one of the most popular novels in English ' +
+                  'literature and has inspired many derivatives in modern literature.</p>';
+            } else if (bookId === 'video') {
+                details = '<h3>Fargo</h3>' +
+                  '<p>Frances McDormand stars as Marge Gunderson, a pregnant Minnesota police chief investigating a triple homicide that takes place after a desperate car ' +
+                  'salesman (William H. Macy) hires two criminals (Steve Buscemi and Peter Stormare) to kidnap his wife in order to extort a hefty ransom from her wealthy ' +
+                  'father (Harve Presnell).</p>';
+            }
+            // Add more cases for additional books
+            document.getElementById('bookDetails').innerHTML = details;
+        }
+        function addMessage() {
+            var input = document.getElementById("messageInput");
+            var message = input.value.trim();
+            if(message) {
+                var messagesDiv = document.getElementById("messages");
+                messagesDiv.innerHTML += '<p><strong>Guest:</strong> ' + message + '</p>';
+                input.value = ""; // Clear the input after adding a message
+            }
+        }
+        function checkQuizAnswers() {
+            var correct = 0;
+            var totalQuestions = 10; // Update with the total number of questions
+
+            // Question 1
+            if (document.getElementById('q1Option2').checked) correct++; // Correct answer for question 1
+
+            // Question 2
+            if (document.getElementById('q2Option3').checked) correct++; // Correct answer for question 2
+
+            // Question 3
+            if (document.getElementById('q3Option3').checked) correct++; // Correct answer for question 3
+
+            // Question 4
+            if (document.getElementById('q4Option2').checked) correct++; // Correct answer for question 4
+
+            // Question 5
+            if (document.getElementById('q5Option1').checked) correct++; // Correct answer for question 5
+
+            // Question 6
+            if (document.getElementById('q6Option2').checked) correct++; // Correct answer for question 6
+
+            // Question 7
+            if (document.getElementById('q7Option1').checked) correct++; // Correct answer for question 7
+
+            // Question 8
+            if (document.getElementById('q8Option3').checked) correct++; // Correct answer for question 8
+
+            // Question 9
+            if (document.getElementById('q9Option3').checked) correct++; // Correct answer for question 9
+
+            // Question 10
+            if (document.getElementById('q10Option1').checked) correct++; // Correct answer for question 10
+
+            var result = "You got " + correct + " out of " + totalQuestions + " correct!";
+            document.getElementById('quizResult').innerText = result;
+        }
+        function playSound(soundId) {
+            var sound = document.getElementById(soundId);
+            sound.play();
+        }
+    </script>
+</body>
+</html>
